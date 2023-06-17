@@ -4,19 +4,13 @@ const Calculator =()=> {
     const [distanceState, setdistanceState] = useState ([])
     const [input1,setInput1] = useState ("") 
     const [input2,setInput2] = useState ("") 
-    // var distanceInMiles = "_____";
     async function fetchInfo(){
         const result = await axios.get(`https://zip-api.eu/api/v1/distance/US-${input1}/US-${input2}/mi`) 
         console.log(result)
         setdistanceState(result.data)
-        // distanceInMiles = Number(distanceState.distance).toFixed(2);
-        
     }
 
-    const distanceInMiles = Number(distanceState.distance).toFixed(2);
-
-    console.log(distanceInMiles);
-return(
+    return(
     
     <div>
         {/* <form onSubmit={fetchInfo}>  */}
@@ -25,9 +19,7 @@ return(
        <input type="text" placeholder="ending zip code" onChange={e=>{setInput2(e.target.value)}}/> 
        <br></br>
        <button onClick={fetchInfo}> Submit </button> 
-        <h1>The distance between this two zip code is {distanceInMiles} miles </h1>
-        {/* </form> */}
-        {/* {distanceInMiles &&<h1>The distance between this two zip code is {distanceInMiles} miles </h1>} */}
+        {distanceState.distance ? (<h1>The distance between this two zip code is {Number(distanceState.distance).toFixed(2)} miles </h1>) : (<h1>Please enter two zip codes.</h1>)}
 
         
     </div>
