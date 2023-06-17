@@ -18,7 +18,7 @@ const Calculator =()=> {
        <input type="text" placeholder="ending zip code" onChange={e=>{setInput2(e.target.value)}}/> 
        <br></br>
        <button onClick={fetchInfo}> Submit </button> 
-        {distanceState.distance ? (<h1>The distance between these two zip codesis {Number(distanceState.distance).toFixed(2)} miles </h1>) : (<h1>Please enter two zip codes.</h1>)}
+        {distanceState.distance ? (<h1>The distance between these two zip codes is {Number(distanceState.distance).toFixed(2)} miles </h1>) : (<h1>Please enter two zip codes.</h1>)}
 
         
     </div>
